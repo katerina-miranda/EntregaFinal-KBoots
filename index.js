@@ -1,61 +1,152 @@
-// Ejercicio 1
+//Usuario y contraseña
 
-const numero1 = Number(prompt('Ingresá un número'));
-
-for (let i = 0; i <= 20; i++) {
-  const result = i * numero1;
-  alert('La suma de ' + i + ' + ' + numero1 + ' es ' + result);  
+function saludo(persona) {
+  alert('Hola ' + persona + ', bienvenida/o');
 }
 
-// Ejercicio 2
-
-let numero2 = Number(prompt('Escribe un número'));
-
-if (numero2 % 2 === 0 || numero2 % 3 === 0 || numero2 % 5 === 0 || numero2 % 7 === 0) {
-  alert('Es divisible por 2, 3, 5 o 7');
-} else {
-  alert('No es divisible ni por 2, ni por 3, ni por 5, ni por 7');
+const pedirNombre = () => {
+  let nombre = prompt('Ingresá tu nombre');
+  saluda(nombre);
 }
 
-// Ejercicio 3
- 
-let nombre = prompt('Ingresá tu nombre');
-let apellido = prompt('Ingresá tu apellido');
-
-while((nombre || apellido) !== 'salir') {
-  alert('Hola, ' + nombre + ' ' + apellido + ' bienvenida a mi página!');
-  nombre = prompt('Ingresá otro nombre');
-  apellido = prompt('Ingresá otro apellido');
+const usuarioContrasena = () => {
+  let usuario = prompt('Ingresá tu usuario');
+  while (usuario != usuario) {
+    alert('Usuario incorrecto');
+    usuario = prompt('Ingresá tu usuario');
+    return usuario;
+  } 
+  let contrasena = prompt('Ingresá una contraseña');
+  while (contrasena != contrasena) {
+    contrasena = prompt('Ingresá una contraseña');
+  }   
+  alert ('Hola, ' + usuario + ' bienvenida/o a K-SHOES');
+  saluda(usuario);
 }
 
-// Ejercicio 4
-
-let parientes = prompt('Ingresá el nombre de tu familia');
-let familia = '';
-
-while(parientes != 'yo') {
-  familia += parientes + '\n';
-  parientes = prompt('Ingresá el nombre de tu familia');
+const saluda = (usuario) => {
+  alert('Bienvenida/o ' + usuario);
 }
 
-alert(familia);
+pedirNombre();
+usuarioContrasena();
 
-// Ejercicio 5
+//Cargar producto
 
-let cantidad = prompt('Ingresá una cantidad de repeticiones')
-let texto = prompt('Ingresá el texto a repetir')
-
-for(let i = 1; i <= cantidad; i++) {
-  alert(texto);
-}
-
-// Ejercicio 6
-
-let repeticion = prompt('Ingresá una cantidad de repeticiones');
-
-for(let i = 1; i < repeticion; i++) {
-  if(i > 5) {
-    break;
+class Producto {
+  constructor(nombre, id, precio, color, talle, stock) {
+    this.nombre = nombre;
+    this.id = id;
+    this.precio = precio;
+    this.color = color;
+    this.talle = talle;
+    this.stock = stock;
   }
-  alert('Uy! Sólo son 5 repeticiones');
+
+  vender(cantidad) {
+    this.stock = this.stock - cantidad;
+  }
+}
+
+//Cargo el stock de productos
+
+const botas1 = new Producto('Botas Leather', 1, 5000, 'Negro', '45', 30);
+const botas2 = new Producto('Botas Louisiana', 2, 8400, 'Blanco', '45', 10);
+const botas3 = new Producto('Borcegos Beta', 3, 4500, 'Negro', '48', 20);
+const botas4 = new Producto('Botas Cinnamon', 4, 3800, 'Blanco', '48', 40);
+
+function calcularPrecio(precioBotas, cantidadBotas, costoEnvio) {
+  return (precioBotas * cantidadBotas) + costoEnvio;
+}
+
+//Solicito datos al usuario
+
+alert('Productos:' + '\n' + '(1) Botas Leather talle 45 $5.000' + '\n' + '(2) Botas Louisiana talle 45 $8.400' + '\n' + '(3) Bocegos Beta talle 48 $4.500' + '\n' + '(4) Botas Cinnamon talle 48 $3.800');
+let botasSeleccionadas = parseInt(prompt('Ingresá el ID de las botas que deseas comprar:'));
+let cantidad = parseInt(prompt('Ingresá la cantidad de botas a comprar:'));
+const envio = 900; 
+
+//Salida de consola con el precio final segun el ID elegido
+
+if(botasSeleccionadas == botas1.id) {
+  alert('El precio final de tu compra es: $' + calcularPrecio(botas1.precio, cantidad, envio));
+  botas1.vender(cantidad);
+} else if(botasSeleccionadas == botas2.id) {
+  alert('El precio final de tu compra es: $' + calcularPrecio(botas2.precio, cantidad, envio));
+  botas2.vender(cantidad);
+} else if(botasSeleccionadas == botas3.id) {
+  alert('El precio final de tu compra es: $' + calcularPrecio(botas3.precio, cantidad, envio));
+  botas3.vender(cantidad);
+} else if(botasSeleccionadas == botas4.id) {
+  alert('El precio final de tu compra es: $' + calcularPrecio(botas4.precio, cantidad, envio));
+  botas4.vender(cantidad);
+} else {
+  alert('Error! Ingresá un ID válido.');
+}
+
+//Cotizador de descuentos
+
+const menu = prompt('Elegí el descuento a realizar\n' +
+'1-Realizar 20% de descuento\n' +
+'2-Realizar 30% de descuento\n' +
+'3-Realizar 40% de descuento\n' +
+'0-Salir\n');
+
+const elegirOpcionMenu = () => {
+  let esCorrecto;
+  let opcion;
+  do {
+    opcion = (menu);
+    switch (opcion) {
+      case "0":
+        break;
+      case "1":
+      case "2":
+      case "3":
+        esCorrecto = true;
+      break;
+      default:
+        esCorrecto = false;
+        alert('La opción ' + opcion + 'no es válida');
+      break;
+    }
+  } while(!esCorrecto);
+  return opcion;
+}
+
+const hacerUno = () => {
+  let descuento20 = precio - (precio * 0.2);
+  alert('Tu descuento del 20% es de ' + descuento20);
+}
+
+const hacerDos = () => {
+  let descuento30 = precio - (precio * 0.3);
+  alert('Tu descuento del 30% es de ' + descuento30);
+}
+
+const hacerTres = () => {
+	let descuento40 = precio - (precio * 0.4);
+  alert('Tu descuento del 40% es de ' + descuento40);
+}
+
+let salir = false;
+let precio ;
+
+while(!salir) {
+  let opcion = elegirOpcionMenu();
+  precio = prompt('Ingresá el precio de las botas elegidas');
+  switch (opcion) {
+    case "1":
+      hacerUno();
+    break;
+    case "2":
+      hacerDos();
+    break;
+    case "3":
+      hacerTres();
+    break;
+    case "0":
+      salir = false;
+    break; 
+  }
 }
