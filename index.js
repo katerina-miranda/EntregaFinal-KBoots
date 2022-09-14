@@ -55,17 +55,17 @@ const borcego = [];
 
 //Cargo el stock de productos
 
-bota.unshift(new Producto('Botas Leather', 1, '$22.550', 'Negro', '45', 30));
-bota.unshift(new Producto('Botas Louisiana', 2, '$14.850', 'Blanco', '45', 10));
-bota.unshift(new Producto('Botas Cinnamon', 3, '$18.260', 'Negro', '48', 40));
+bota.push(new Producto('Botas Leather', 1, '$22.550', 'Negro', '45', 30));
+bota.push(new Producto('Botas Louisiana', 2, '$14.850', 'Blanco', '45', 10));
+bota.push(new Producto('Botas Cinnamon', 3, '$18.260', 'Negro', '48', 40));
 
-texana.unshift(new Producto('Texanas Apola', 4, '$6.300', 'Blanco', '46', 15));
-texana.unshift(new Producto('Texanas Aria', 5, '$12.900', 'Negro', '46', 22));
-texana.unshift(new Producto('Texanas Shirp', 6, '$13.800', 'Blanco', '48', 30));
+texana.push(new Producto('Texanas Apola', 4, '$6.300', 'Blanco', '46', 15));
+texana.push(new Producto('Texanas Aria', 5, '$12.900', 'Negro', '46', 22));
+texana.push(new Producto('Texanas Shirp', 6, '$13.800', 'Blanco', '48', 30));
 
-borcego.unshift(new Producto('Borcegos Beta', 7, '$9.999', 'Negro', '45', 21));
-borcego.unshift(new Producto('Borcegos Genesis', 8, '$15.480', 'Blanco', '48', 30));
-borcego.unshift(new Producto('Borcegos Marig', 9, '$15.950', 'Negro', '45', 30));
+borcego.push(new Producto('Borcegos Beta', 7, '$9.999', 'Negro', '45', 21));
+borcego.push(new Producto('Borcegos Genesis', 8, '$15.480', 'Blanco', '48', 30));
+borcego.push(new Producto('Borcegos Marig', 9, '$15.950', 'Negro', '45', 30));
 
 //Demuestro los productos 
 
@@ -93,7 +93,7 @@ if(botaSeleccionada <= 0) {
 } else if(botaSeleccionada <= 6) {
   alert('Seleccionaste ' + texanasElegidas.nombre + ' ' + texanasElegidas.precio + '\nTocá aceptar para agregarlas a tu carrito');
 } else if(botaSeleccionada <= 9) {
-  alert('Seleccionaste ' + borcegosElegidos.nombre + borcegosElegidos.precio + '\nTocá aceptar para agregarlos a tu carrito');
+  alert('Seleccionaste ' + borcegosElegidos.nombre + ' ' + borcegosElegidos.precio + '\nTocá aceptar para agregarlos a tu carrito');
 } else {
   alert('Ingresá un ID válido');
 }
