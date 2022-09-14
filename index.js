@@ -42,46 +42,60 @@ class Producto {
     this.talle = talle;
     this.stock = stock;
   }
-
   vender(cantidad) {
     this.stock = this.stock - cantidad;
   }
 }
 
+//Inicializo arrays
+
+const bota = [];
+const texana = [];
+const borcego = [];
+
 //Cargo el stock de productos
 
-const botas1 = new Producto('Botas Leather', 1, 5000, 'Negro', '45', 30);
-const botas2 = new Producto('Botas Louisiana', 2, 8400, 'Blanco', '45', 10);
-const botas3 = new Producto('Borcegos Beta', 3, 4500, 'Negro', '48', 20);
-const botas4 = new Producto('Botas Cinnamon', 4, 3800, 'Blanco', '48', 40);
+bota.push(new Producto('Botas Leather', 1, '$22.550', 'Negro', '45', 30));
+bota.push(new Producto('Botas Louisiana', 2, '$14.850', 'Blanco', '45', 10));
+bota.push(new Producto('Botas Cinnamon', 3, '$18.260', 'Negro', '48', 40));
 
-function calcularPrecio(precioBotas, cantidadBotas, costoEnvio) {
-  return (precioBotas * cantidadBotas) + costoEnvio;
+texana.push(new Producto('Texanas Apola', 4, '$6.300', 'Blanco', '46', 15));
+texana.push(new Producto('Texanas Aria', 5, '$12.900', 'Negro', '46', 22));
+texana.push(new Producto('Texanas Shirp', 6, '$13.800', 'Blanco', '48', 30));
+
+borcego.push(new Producto('Borcegos Beta', 7, '$9.999', 'Negro', '45', 21));
+borcego.push(new Producto('Borcegos Genesis', 8, '$15.480', 'Blanco', '48', 30));
+borcego.push(new Producto('Borcegos Marig', 9, '$15.950', 'Negro', '45', 30));
+
+//Demuestro los productos 
+
+for(const botas of bota) {
+  alert('ID (' + botas.id + ') - ' + botas.nombre + ' ' + botas.precio);
+}
+for(const texanas of texana) {
+  alert('ID (' + texanas.id + ') - ' + texanas.nombre + ' ' + texanas.precio);
+}
+for(const borcegos of borcego) {
+  alert('ID (' + borcegos.id + ') - ' + borcegos.nombre + ' ' + borcegos.precio);
 }
 
-//Solicito datos al usuario
+//Solicito ID de los zapatos
 
-alert('Productos:' + '\n' + '(1) Botas Leather talle 45 $5.000' + '\n' + '(2) Botas Louisiana talle 45 $8.400' + '\n' + '(3) Bocegos Beta talle 48 $4.500' + '\n' + '(4) Botas Cinnamon talle 48 $3.800');
-let botasSeleccionadas = parseInt(prompt('Ingresá el ID de las botas que deseas comprar:'));
-let cantidad = parseInt(prompt('Ingresá la cantidad de botas a comprar:'));
-const envio = 900; 
+let botaSeleccionada = parseInt(prompt('Ingresá el ID de las botas que deseas comprar:'));
+const botasElegidas = bota.find(botas => botas.id === botaSeleccionada);
+const texanasElegidas = texana.find(texanas => texanas.id == botaSeleccionada);
+const borcegosElegidos = borcego.find(borcegos => borcegos.id == botaSeleccionada);
 
-//Salida de consola con el precio final segun el ID elegido
-
-if(botasSeleccionadas == botas1.id) {
-  alert('El precio final de tu compra es: $' + calcularPrecio(botas1.precio, cantidad, envio));
-  botas1.vender(cantidad);
-} else if(botasSeleccionadas == botas2.id) {
-  alert('El precio final de tu compra es: $' + calcularPrecio(botas2.precio, cantidad, envio));
-  botas2.vender(cantidad);
-} else if(botasSeleccionadas == botas3.id) {
-  alert('El precio final de tu compra es: $' + calcularPrecio(botas3.precio, cantidad, envio));
-  botas3.vender(cantidad);
-} else if(botasSeleccionadas == botas4.id) {
-  alert('El precio final de tu compra es: $' + calcularPrecio(botas4.precio, cantidad, envio));
-  botas4.vender(cantidad);
+if(botaSeleccionada <= 0) {
+  alert('Ingresá un ID válido');
+} else if(botaSeleccionada <= 3) {
+  alert('Seleccionaste ' +  botasElegidas.nombre + ' ' + botasElegidas.precio + '\nTocá aceptar para agregarlas a tu carrito'); 
+} else if(botaSeleccionada <= 6) {
+  alert('Seleccionaste ' + texanasElegidas.nombre + ' ' + texanasElegidas.precio + '\nTocá aceptar para agregarlas a tu carrito');
+} else if(botaSeleccionada <= 9) {
+  alert('Seleccionaste ' + borcegosElegidos.nombre + ' ' + borcegosElegidos + '\nTocá aceptar para agregarlos a tu carrito');
 } else {
-  alert('Error! Ingresá un ID válido.');
+  alert('Ingresá un ID válido');
 }
 
 //Cotizador de descuentos
