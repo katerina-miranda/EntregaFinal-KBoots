@@ -83,8 +83,8 @@ for(const borcegos of borcego) {
 
 let botaSeleccionada = parseInt(prompt('Ingresá el ID de las botas que deseas comprar:'));
 const botasElegidas = bota.find(botas => botas.id === botaSeleccionada);
-const texanasElegidas = texana.find(texanas => texanas.id == botaSeleccionada);
-const borcegosElegidos = borcego.find(borcegos => borcegos.id == botaSeleccionada);
+const texanasElegidas = texana.find(texanas => texanas.id === botaSeleccionada);
+const borcegosElegidos = borcego.find(borcegos => borcegos.id === botaSeleccionada);
 
 if(botaSeleccionada <= 0) {
   alert('Ingresá un ID válido');
