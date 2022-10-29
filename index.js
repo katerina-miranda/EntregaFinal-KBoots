@@ -6,22 +6,20 @@ function saludo(persona) {
 
 const pedirNombre = () => {
   let nombre = prompt('Ingresá tu nombre');
-  saluda(nombre);
 }
 
 const usuarioContrasena = () => {
   let usuario = prompt('Ingresá tu usuario');
-  while (usuario != usuario) {
+  while(usuario != usuario) {
     alert('Usuario incorrecto');
     usuario = prompt('Ingresá tu usuario');
     return usuario;
   } 
   let contrasena = prompt('Ingresá una contraseña');
-  while (contrasena != contrasena) {
+  while(contrasena != contrasena) {
     contrasena = prompt('Ingresá una contraseña');
   }   
-  alert ('Hola, ' + usuario + ' bienvenida/o a K-SHOES');
-  saluda(usuario);
+  alert('Hola, ' + usuario + ' bienvenida/o a K-SHOES');
 }
 
 const saluda = (usuario) => {
@@ -111,7 +109,7 @@ const elegirOpcionMenu = () => {
   let opcion;
   do {
     opcion = (menu);
-    switch (opcion) {
+    switch(opcion) {
       case "0":
         break;
       case "1":
@@ -149,7 +147,7 @@ let precio ;
 while(!salir) {
   let opcion = elegirOpcionMenu();
   precio = prompt('Ingresá el precio de las botas elegidas');
-  switch (opcion) {
+  switch(opcion) {
     case "1":
       hacerUno();
     break;
