@@ -142,7 +142,7 @@ const hacerTres = () => {
 }
 
 let salir = false;
-let precio ;
+let precio;
 
 while(!salir) {
   let opcion = elegirOpcionMenu();
