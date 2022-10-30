@@ -1,11 +1,12 @@
 //Usuario y contraseña
 
 function saludo(persona) {
-  alert('Hola ' + persona + ', bienvenida/o');
+  alert('Hola ${persona}, bienvenida/o');
 }
 
 const pedirNombre = () => {
   let nombre = prompt('Ingresá tu nombre');
+  saluda(nombre);
 }
 
 const usuarioContrasena = () => {
