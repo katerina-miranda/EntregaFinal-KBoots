@@ -1,7 +1,7 @@
 //Usuario y contraseña
 
 function saludo(persona) {
-  alert('Hola ${persona}, bienvenida/o');
+  alert(`Hola ${persona}, bienvenida/o`);
 }
 
 const pedirNombre = () => {
@@ -14,17 +14,17 @@ const usuarioContrasena = () => {
   while(usuario != usuario) {
     alert('Usuario incorrecto');
     usuario = prompt('Ingresá tu usuario');
-    return usuario;
+    return usuario; 
   } 
   let contrasena = prompt('Ingresá una contraseña');
   while(contrasena != contrasena) {
     contrasena = prompt('Ingresá una contraseña');
   }   
-  alert('Hola, ' + usuario + ' bienvenida/o a K-SHOES');
+  alert(`Hola, ${usuario} bienvenida/o a K-SHOES`);
 }
 
 const saluda = (usuario) => {
-  alert('Bienvenida/o ' + usuario);
+  alert(`Bienvenida/o ${usuario}`);
 }
 
 pedirNombre();
@@ -88,11 +88,11 @@ const borcegosElegidos = borcego.find(borcegos => borcegos.id === botaSelecciona
 if(botaSeleccionada <= 0) {
   alert('Ingresá un ID válido');
 } else if(botaSeleccionada <= 3) {
-  alert('Seleccionaste ' +  botasElegidas.nombre + ' ' + botasElegidas.precio + '\nTocá aceptar para agregarlas a tu carrito'); 
+  alert(`Seleccionaste ${botasElegidas.nombre} ${botasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`); 
 } else if(botaSeleccionada <= 6) {
-  alert('Seleccionaste ' + texanasElegidas.nombre + ' ' + texanasElegidas.precio + '\nTocá aceptar para agregarlas a tu carrito');
+  alert(`Seleccionaste ${texanasElegidas.nombre} ${texanasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
 } else if(botaSeleccionada <= 9) {
-  alert('Seleccionaste ' + borcegosElegidos.nombre + ' ' + borcegosElegidos.precio + '\nTocá aceptar para agregarlos a tu carrito');
+  alert(`Seleccionaste ${borcegosElegidos.nombre} ${borcegosElegidos.precio} \nTocá aceptar para agregarlos a tu carrito`);
 } else {
   alert('Ingresá un ID válido');
 }
@@ -120,7 +120,7 @@ const elegirOpcionMenu = () => {
       break;
       default:
         esCorrecto = false;
-        alert('La opción ' + opcion + 'no es válida');
+        alert(`La opción ${opcion} no es válida`);
       break;
     }
   } while(!esCorrecto);
@@ -129,17 +129,17 @@ const elegirOpcionMenu = () => {
 
 const hacerUno = () => {
   let descuento20 = precio - (precio * 0.2);
-  alert('Tu descuento del 20% es de ' + descuento20);
+  alert(`Tu descuento del 20% es de ${descuento20}`);
 }
 
 const hacerDos = () => {
   let descuento30 = precio - (precio * 0.3);
-  alert('Tu descuento del 30% es de ' + descuento30);
+  alert(`Tu descuento del 30% es de ${descuento30}`);
 }
 
 const hacerTres = () => {
 	let descuento40 = precio - (precio * 0.4);
-  alert('Tu descuento del 40% es de ' + descuento40);
+  alert(`Tu descuento del 40% es de ${descuento40}`);
 }
 
 let salir = false;
