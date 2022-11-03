@@ -1,6 +1,6 @@
 //Usuario y contraseña
 
-function saludo(persona) {
+function saludo(persona){
   alert(`Hola ${persona}, bienvenida/o`);
 }
 
@@ -11,13 +11,13 @@ const pedirNombre = () => {
 
 const usuarioContrasena = () => {
   let usuario = prompt('Ingresá tu usuario');
-  while(usuario != usuario) {
+  while(usuario != usuario){
     alert('Usuario incorrecto');
     usuario = prompt('Ingresá tu usuario');
     return usuario; 
   } 
   let contrasena = prompt('Ingresá una contraseña');
-  while(contrasena != contrasena) {
+  while(contrasena != contrasena){
     contrasena = prompt('Ingresá una contraseña');
   }   
   alert(`Hola, ${usuario} bienvenida/o a K-SHOES`);
@@ -32,8 +32,8 @@ usuarioContrasena();
 
 //Cargar producto
 
-class Producto {
-  constructor(nombre, id, precio, color, talle, stock) {
+class Producto{
+  constructor(nombre, id, precio, color, talle, stock){
     this.nombre = nombre;
     this.id = id;
     this.precio = precio;
@@ -41,7 +41,7 @@ class Producto {
     this.talle = talle;
     this.stock = stock;
   }
-  vender(cantidad) {
+  vender(cantidad){
     this.stock = this.stock - cantidad;
   }
 }
@@ -68,13 +68,13 @@ borcego.push(new Producto('Borcegos Marig', 9, '$15.950', 'Negro', '45', 30));
 
 //Demuestro los productos 
 
-for(const botas of bota) {
+for(const botas of bota){
   alert('ID (' + botas.id + ') - ' + botas.nombre + ' ' + botas.precio);
 }
-for(const texanas of texana) {
+for(const texanas of texana){
   alert('ID (' + texanas.id + ') - ' + texanas.nombre + ' ' + texanas.precio);
 }
-for(const borcegos of borcego) {
+for(const borcegos of borcego){
   alert('ID (' + borcegos.id + ') - ' + borcegos.nombre + ' ' + borcegos.precio);
 }
 
@@ -85,15 +85,15 @@ const botasElegidas = bota.find(botas => botas.id === botaSeleccionada);
 const texanasElegidas = texana.find(texanas => texanas.id === botaSeleccionada);
 const borcegosElegidos = borcego.find(borcegos => borcegos.id === botaSeleccionada);
 
-if(botaSeleccionada <= 0) {
+if(botaSeleccionada <= 0){
   alert('Ingresá un ID válido');
-} else if(botaSeleccionada <= 3) {
+}else if(botaSeleccionada <= 3){
   alert(`Seleccionaste ${botasElegidas.nombre} ${botasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`); 
-} else if(botaSeleccionada <= 6) {
+}else if(botaSeleccionada <= 6){
   alert(`Seleccionaste ${texanasElegidas.nombre} ${texanasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
-} else if(botaSeleccionada <= 9) {
+}else if(botaSeleccionada <= 9){
   alert(`Seleccionaste ${borcegosElegidos.nombre} ${borcegosElegidos.precio} \nTocá aceptar para agregarlos a tu carrito`);
-} else {
+}else{
   alert('Ingresá un ID válido');
 }
 
@@ -108,9 +108,9 @@ const menu = prompt('Elegí el descuento a realizar\n' +
 const elegirOpcionMenu = () => {
   let esCorrecto;
   let opcion;
-  do {
+  do{
     opcion = (menu);
-    switch(opcion) {
+    switch(opcion){
       case "0":
         break;
       case "1":
@@ -123,7 +123,7 @@ const elegirOpcionMenu = () => {
         alert(`La opción ${opcion} no es válida`);
       break;
     }
-  } while(!esCorrecto);
+  }while(!esCorrecto);
   return opcion;
 }
 
@@ -145,10 +145,10 @@ const hacerTres = () => {
 let salir = false;
 let precio;
 
-while(!salir) {
+while(!salir){
   let opcion = elegirOpcionMenu();
   precio = prompt('Ingresá el precio de las botas elegidas');
-  switch(opcion) {
+  switch(opcion){
     case "1":
       hacerUno();
     break;
