@@ -27,9 +27,9 @@ function usuarioContrasena(){
 pedirNombre();
 usuarioContrasena();
 
-//Cargar producto
+//Cargar productos
 
-class Producto {
+class Productos {
   constructor(nombre, id, precio, color, talle, stock) {
     this.nombre = nombre;
     this.id = id;
@@ -51,17 +51,17 @@ const borcego = [];
 
 //Cargo el stock de productos
 
-bota.push(new Producto('Botas Leather', 1, '$22.550', 'Negro', '45', 30));
-bota.push(new Producto('Botas Louisiana', 2, '$14.850', 'Blanco', '45', 10));
-bota.push(new Producto('Botas Cinnamon', 3, '$18.260', 'Negro', '48', 40));
+bota.push(new Productos('Botas Leather', 1, '$22.550', 'Negro', '45', 30));
+bota.push(new Productos('Botas Louisiana', 2, '$14.850', 'Blanco', '45', 10));
+bota.push(new Productos('Botas Cinnamon', 3, '$18.260', 'Negro', '46', 40));
 
-texana.push(new Producto('Texanas Apola', 4, '$6.300', 'Blanco', '46', 15));
-texana.push(new Producto('Texanas Aria', 5, '$12.900', 'Negro', '46', 22));
-texana.push(new Producto('Texanas Shirp', 6, '$13.800', 'Blanco', '48', 30));
+texana.push(new Productos('Texanas Apola', 4, '$6.300', 'Blanco', '46', 15));
+texana.push(new Productos('Texanas Aria', 5, '$12.900', 'Negro', '46', 22));
+texana.push(new Productos('Texanas Shirp', 6, '$13.800', 'Blanco', '45', 30));
 
-borcego.push(new Producto('Borcegos Beta', 7, '$9.999', 'Negro', '45', 21));
-borcego.push(new Producto('Borcegos Genesis', 8, '$15.480', 'Blanco', '48', 30));
-borcego.push(new Producto('Borcegos Marig', 9, '$15.950', 'Negro', '45', 30));
+borcego.push(new Productos('Borcegos Beta', 7, '$9.999', 'Negro', '45', 21));
+borcego.push(new Productos('Borcegos Genesis', 8, '$15.480', 'Blanco', '46', 30));
+borcego.push(new Productos('Borcegos Marig', 9, '$15.950', 'Negro', '45', 30));
 
 //Demuestro los productos 
 
