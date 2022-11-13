@@ -1,30 +1,26 @@
 //Usuario y contraseña
 
-function saludo(persona) {
-  alert(`Hola ${persona}, bienvenida/o`);
-}
-
-const pedirNombre = () => {
+function pedirNombre(){
   let nombre = prompt('Ingresá tu nombre');
   saluda(nombre);
 }
 
-const usuarioContrasena = () => {
+const saluda = (usuario) => {
+  alert(`Bienvenida/o ${usuario}`);
+}
+
+function usuarioContrasena(){
   let usuario = prompt('Ingresá tu usuario');
   while(usuario != usuario) {
     alert('Usuario incorrecto');
     usuario = prompt('Ingresá tu usuario');
-    return usuario; 
   } 
   let contrasena = prompt('Ingresá una contraseña');
   while(contrasena != contrasena) {
+    alert('Contraseña incorrecta');
     contrasena = prompt('Ingresá una contraseña');
   }   
   alert(`Hola, ${usuario} bienvenida/o a K-SHOES`);
-}
-
-const saluda = (usuario) => {
-  alert(`Bienvenida/o ${usuario}`);
 }
 
 pedirNombre();
@@ -114,14 +110,18 @@ const elegirOpcionMenu = () => {
       case "0":
         break;
       case "1":
+        esCorrecto = true;
+        break;
       case "2":
+        esCorrecto = true;
+        break;
       case "3":
         esCorrecto = true;
-      break;
+        break;
       default:
         esCorrecto = false;
         alert(`La opción ${opcion} no es válida`);
-      break;
+        break;
     }
   } while(!esCorrecto);
   return opcion;
@@ -159,7 +159,9 @@ while(!salir) {
       hacerTres();
     break;
     case "0":
-      salir = false;
+      salir = true;
     break; 
+    default:
+      alert(`La opción ${opcion} no es válida`);
   }
 }
