@@ -14,6 +14,7 @@ function usuarioContrasena(){
   while(usuario != usuario) {
     alert('Usuario incorrecto');
     usuario = prompt('Ingresá tu usuario');
+    return usuario;
   } 
   let contrasena = prompt('Ingresá una contraseña');
   while(contrasena != contrasena) {
