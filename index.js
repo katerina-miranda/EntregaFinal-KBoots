@@ -42,7 +42,7 @@ class Producto {
     this.vendido = false;
   }
 
-  vender() {
+  vender(cantidad) {
     this.stock = this.stock - cantidad;
   }
 }
@@ -139,7 +139,7 @@ borcegos.push(new Producto({
 //Demuestro los productos
 
 for(const bota of botas) {
-  alert('ID (' + bota.id + ') - ' + bota.nombre + ' ' + botas.precio);
+  alert('ID (' + bota.id + ') - ' + bota.nombre + ' ' + bota.precio);
 }
 for(const texana of texanas) {
   alert('ID (' + texana.id + ') - ' + texana.nombre + ' ' + texana.precio);
