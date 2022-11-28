@@ -41,7 +41,6 @@ class Producto {
     this.stock = detalle.stock;
     this.vendido = false;
   }
-
   vender(cantidad) {
     this.stock = this.stock - cantidad;
   }
@@ -49,37 +48,26 @@ class Producto {
 
 //Inicializo arrays
 
-const botas = [
-  /* {nombre: 'Botas Leather', id: 1, precio: '$22.550', color: 'Negro', talle: '45', stock: 10},
-  {nombre: 'Botas Louisiana', id: 2, precio: '$14.850', color: 'Blanco', talle: '45', stock: 15},
-  {nombre: 'Botas Cinnamon', id: 3, precio: '$18.260', color: 'Negro', talle: '46', stock: 14}, */
-];
-
-const texanas = [
-  /* {nombre: 'Texanas Apola', id: 4, precio: '$6.300', color: 'Blanco', talle: '46', stock: 15},
-  {nombre: 'Texanas Aria', id: 5, precio: '$12.900', color: 'Negro', talle: '46', stock: 12},
-  {nombre: 'Texanas Shirp', id: 6, precio: '$13.800', color: 'Blanco', talle: '45', stock: 9} */
-];
-
-const borcegos = [
-  /* {nombre: 'Borcegos Beta', id: 7, precio: '$9.999', color: 'Negro', talle: '45', stock: 15},
-  {nombre: 'Borcegos Genesis', id: 8, precio: '$15.480', color: 'Blanco', talle: '46', stock: 14},
-  {nombre: 'Borcegos Marig', id: 9, precio: '$15.950', color: 'Negro', talle: '45', stock: 10} */
-];
+const botas = [];
+const texanas = [];
+const borcegos = [];
+const carrito = [];
 
 //Cargo el stock de productos
 
-botas.push(new Producto('Botas Leather', 1, '$22.550', 'Negro', '45', 10));
-botas.push(new Producto('Botas Louisiana', 2, '$14.850', 'Blanco', '45', 15));
-botas.push(new Producto('Botas Cinnamon', 3, '$18.260', 'Negro', '46', 14));
+botas.push(new Producto({nombre: 'Botas Leather', id: 1, precio: '$22.550', color:'Negro', talle: '45', stock: 10}));
+botas.push(new Producto({nombre: 'Botas Louisiana', id: 2, precio: '$14.850', color:'Blanco', talle: '45', stock: 15}));
+botas.push(new Producto({nombre: 'Botas Cinnamon', id: 3, precio: '$18.260', color:'Negro', talle: '46', stock: 14}));
 
-texanas.push(new Producto('Texanas Apola', 4, '$6.300', 'Blanco', '46', 15));
-texanas.push(new Producto('Texanas Aria', 5, '$12.900', 'Negro', '46', 12));
-texanas.push(new Producto('Texanas Shirp', 6, '$13.800', 'Blanco', '45', 9));
+texanas.push(new Producto({nombre: 'Texanas Apola', id: 4, precio: '$6.300', color:'Blanco', talle: '46', stock: 15}));
+texanas.push(new Producto({nombre: 'Texanas Aria', id: 5, precio: '$12.900', color:'Negro', talle: '46', stock: 12}));
+texanas.push(new Producto({nombre: 'Texanas Shirp', id: 6, precio: '$13.800', color:'Blanco', talle: '45', stock: 9}));
 
-borcegos.push(new Producto('Borcegos Beta', 7, '$9.999', 'Negro', '45', 15));
-borcegos.push(new Producto('Borcegos Genesis', 8, '$15.480', 'Blanco', '46', 14));
-borcegos.push(new Producto('Borcegos Marig', 9, '$15.950', 'Negro', '45', 10));
+borcegos.push(new Producto({nombre: 'Borcegos Beta', id: 7, precio: '$9.999', color:'Negro', talle: '45', stock: 15}));
+borcegos.push(new Producto({nombre: 'Borcegos Genesis', id: 8, precio: '$15.480', color:'Blanco', talle: '46', stock: 14}));
+borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 9, precio: '$15.950', color:'Negro', talle: '45', stock: 10}));
+
+carrito.push();
 
 //Demuestro los productos
 
@@ -120,22 +108,19 @@ if(botaSeleccionada <= 0) {
   alert('Ingresá un ID válido');
 
 } else if(botaSeleccionada <= 3) {
-  alert(`Seleccionaste ${botasElegidas.nombre} ${botasElegidas.precio}
-  \nTocá aceptar para agregarlas a tu carrito`);
+  alert(`Seleccionaste ${botasElegidas.nombre} ${botasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
   alert(`El precio final de tu compra es: $${calcularPrecio(botasElegidas.precio, cantidad, envio)}`);
   alert('¡Que lo disfrutes!');
   botasElegidas.vender(cantidad);
 
 } else if(botaSeleccionada <= 6) {
-  alert(`Seleccionaste ${texanasElegidas.nombre} ${texanasElegidas.precio}
-  \nTocá aceptar para agregarlas a tu carrito`);
+  alert(`Seleccionaste ${texanasElegidas.nombre} ${texanasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
   alert(`El precio final de tu compra es: $${calcularPrecio(texanasElegidas.precio, cantidad, envio)}`);
   alert('¡Que lo disfrutes!');
   texanasElegidas.vender(cantidad);
 
 } else if(botaSeleccionada <= 9) {
-  alert(`Seleccionaste ${borcegosElegidos.nombre} ${borcegosElegidos.precio}
-  \nTocá aceptar para agregarlos a tu carrito`);
+  alert(`Seleccionaste ${borcegosElegidos.nombre} ${borcegosElegidos.precio} \nTocá aceptar para agregarlos a tu carrito`);
   alert(`El precio final de tu compra es: $${calcularPrecio(borcegosElegidos.precio, cantidad, envio)}`);
   alert('¡Que lo disfrutes!');
   borcegosElegidos.vender(cantidad);
@@ -143,76 +128,3 @@ if(botaSeleccionada <= 0) {
 } else {
   alert('Ingresá un ID válido');
 }
-
-//Cotizador de descuentos
-
-/* const menu = prompt('Elegí el descuento a realizar\n' +
-'1-Realizar 20% de descuento\n' +
-'2-Realizar 30% de descuento\n' +
-'3-Realizar 40% de descuento\n' +
-'0-Salir\n');
-
-const elegirOpcionMenu = () => {
-  let esCorrecto;
-  let opcion;
-  do {
-    opcion = (menu);
-    switch(opcion) {
-      case "0":
-        break;
-      case "1":
-        esCorrecto = true;
-        break;
-      case "2":
-        esCorrecto = true;
-        break;
-      case "3":
-        esCorrecto = true;
-        break;
-      default:
-        esCorrecto = false;
-        alert(`La opción ${opcion} no es válida`);
-        break;
-    }
-  } while(!esCorrecto);
-  return opcion;
-}
-
-const hacerUno = () => {
-  let descuento20 = precio - (precio * 0.2);
-  alert(`Tu descuento del 20% es de ${descuento20}`);
-}
-
-const hacerDos = () => {
-  let descuento30 = precio - (precio * 0.3);
-  alert(`Tu descuento del 30% es de ${descuento30}`);
-}
-
-const hacerTres = () => {
-	let descuento40 = precio - (precio * 0.4);
-  alert(`Tu descuento del 40% es de ${descuento40}`);
-}
-
-let salir = false;
-let precio;
-
-while(!salir) {
-  let opcion = elegirOpcionMenu();
-  precio = prompt('Ingresá el precio de las botas elegidas');
-  switch(opcion) {
-    case "1":
-      hacerUno();
-    break;
-    case "2":
-      hacerDos();
-    break;
-    case "3":
-      hacerTres();
-    break;
-    case "0":
-      salir = true;
-    break; 
-    default:
-      alert(`La opción ${opcion} no es válida`);
-  }
-} */
