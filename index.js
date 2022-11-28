@@ -69,6 +69,34 @@ borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 9, precio: '$15.950', 
 
 carrito.push();
 
+//DOM 
+
+//Controlo la sección previamente creada en el HTML
+
+let sectionProductos = document.getElementById('section-productos');
+
+//Creo la función para crear el código HTML de las cards
+
+function crearCard(producto) {
+  //Creo el div contenedor para cada card y aplico estilos
+  let card = document.createElement('div');
+  card.setAttribute('class', 'card card-producto');
+  card.style.width = '18rem';
+  //Asigno las cards al elemento padre sección
+  sectionProductos.appendChild(card);
+  //Creo divs que contengan las imágenes de los productos y se los asigno como hijos a las cards
+  let cardImg = document.createElement('div');
+  cardImg.innerHTML = `<img src="./media/${producto.id}.jpg" class="card-img-top" alt="${producto.nombre}"></img>`;
+  card.appendChild(cardImg);
+  //Creo divs que contengan los nombres de los productos y los botones, despues se los asigno como hijos a las cards
+  let cardBody = document.createElement('div');
+  cardBody.innerHTML = `<h5 class="card-title">${producto.nombre}</h5>
+                        <p class="card-text"> Precio: $${producto.precio}</p>
+                        <button class="btn btn-dark">Comprar</button>`;
+  card.appendChild(cardBody);
+  cardBody.setAttribute('class', 'card-body');
+}
+
 //Demuestro los productos
 
 for(const bota of botas) {
