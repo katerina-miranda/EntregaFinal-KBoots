@@ -68,7 +68,7 @@ borcegos.push(new Producto({nombre: 'Borcegos Genesis', id: 8, precio: '$15.480'
 borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 9, precio: '$15.950', color:'Negro', talle: '45', stock: 10}));
 
 carrito.push();
-
+console.log(botas.map((v) => v.nombre))
 //DOM 
 
 //Controlo la sección previamente creada en el HTML
