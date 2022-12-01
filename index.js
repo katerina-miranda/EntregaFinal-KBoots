@@ -16,13 +16,11 @@ function usuarioContrasena() {
     usuario = prompt('Ingresá tu usuario');
     return usuario;
   }
-
   let contrasena = prompt('Ingresá una contraseña');
   while(contrasena != contrasena) {
     alert('Contraseña incorrecta');
     contrasena = prompt('Ingresá una contraseña');
   }
-
   alert(`Hola, ${usuario} bienvenida/o a K-SHOES`);
 }
 
@@ -55,20 +53,20 @@ const carrito = [];
 
 //Cargo el stock de productos
 
-botas.push(new Producto({nombre: 'Botas Leather', id: 1, precio: '$22.550', color:'Negro', talle: '45', stock: 10}));
-botas.push(new Producto({nombre: 'Botas Louisiana', id: 2, precio: '$14.850', color:'Blanco', talle: '45', stock: 15}));
-botas.push(new Producto({nombre: 'Botas Cinnamon', id: 3, precio: '$18.260', color:'Negro', talle: '46', stock: 14}));
+botas.push(new Producto({nombre: 'Botas Winx', id: 1, precio: '$16.890', color:'Negro', talle: '45', stock: 15}));
+botas.push(new Producto({nombre: 'Botas Skul', id: 2, precio: '$15.890', color:'Negro', talle: '45', stock: 15}));
+botas.push(new Producto({nombre: 'Botas XXX', id: 3, precio: '$11.890', color:'Negro', talle: '46', stock: 15}));
 
-texanas.push(new Producto({nombre: 'Texanas Apola', id: 4, precio: '$6.300', color:'Blanco', talle: '46', stock: 15}));
-texanas.push(new Producto({nombre: 'Texanas Aria', id: 5, precio: '$12.900', color:'Negro', talle: '46', stock: 12}));
-texanas.push(new Producto({nombre: 'Texanas Shirp', id: 6, precio: '$13.800', color:'Blanco', talle: '45', stock: 9}));
+texanas.push(new Producto({nombre: 'Texanas Wendy', id: 4, precio: '$16.890', color:'Negro', talle: '46', stock: 15}));
+texanas.push(new Producto({nombre: 'Texanas Aria', id: 5, precio: '$13.890', color:'Negro', talle: '46', stock: 15}));
+texanas.push(new Producto({nombre: 'Texanas Shirp', id: 6, precio: '$13.990', color:'Negro', talle: '45', stock: 15}));
 
-borcegos.push(new Producto({nombre: 'Borcegos Beta', id: 7, precio: '$9.999', color:'Negro', talle: '45', stock: 15}));
-borcegos.push(new Producto({nombre: 'Borcegos Genesis', id: 8, precio: '$15.480', color:'Blanco', talle: '46', stock: 14}));
-borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 9, precio: '$15.950', color:'Negro', talle: '45', stock: 10}));
+borcegos.push(new Producto({nombre: 'Borcegos Beta', id: 7, precio: '$8.990', color:'Negro', talle: '45', stock: 15}));
+borcegos.push(new Producto({nombre: 'Borcegos Delta', id: 8, precio: '$13.890', color:'Negro', talle: '46', stock: 15}));
+borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 9, precio: '$15.890', color:'Negro', talle: '45', stock: 15}));
 
 carrito.push();
-console.log(botas.map((v) => v.nombre))
+
 //DOM 
 
 //Controlo la sección previamente creada en el HTML
@@ -80,21 +78,21 @@ let sectionProductos = document.getElementById('section-productos');
 function crearCard(producto) {
   //Creo el div contenedor para cada card y aplico estilos
   let card = document.createElement('div');
-  card.setAttribute('class', 'card card-producto');
-  card.style.width = '18rem';
+  /* card.setAttribute('class', 'card card-producto');
+  card.style.width = '18rem'; */
   //Asigno las cards al elemento padre sección
   sectionProductos.appendChild(card);
   //Creo divs que contengan las imágenes de los productos y se los asigno como hijos a las cards
   let cardImg = document.createElement('div');
-  cardImg.innerHTML = `<img src="./media/${producto.id}.jpg" class="card-img-top" alt="${producto.nombre}"></img>`;
+  cardImg.innerHTML = `<img src="./img/${producto.id}.jpg" class="card-img-top" alt="${producto.nombre}"></img>`;
   card.appendChild(cardImg);
   //Creo divs que contengan los nombres de los productos y los botones, despues se los asigno como hijos a las cards
   let cardBody = document.createElement('div');
   cardBody.innerHTML = `<h5 class="card-title">${producto.nombre}</h5>
-                        <p class="card-text"> Precio: $${producto.precio}</p>
+                        <p class="card-text">Precio: $${producto.precio}</p>
                         <button class="btn btn-dark">Comprar</button>`;
   card.appendChild(cardBody);
-  cardBody.setAttribute('class', 'card-body');
+  /* cardBody.setAttribute('class', 'card-body'); */
 }
 
 //Demuestro los productos
