@@ -43,30 +43,6 @@ const productos = [
   {id: 15, tipo: 'Zapatos', nombre: 'Zapatos Devon Hells', precio: 13690, foto: './img/zapatos15.jpeg'}
 ];
 
-//Funciones
-
-function calcularTotalCarrito() {
-  let total = 0;
-  for(const producto of carrito) {
-    total += producto.precio;
-  }
-  montoTotalCompra.innerText = total;
-  cantProductos.innerText = carrito.length;
-}
-
-function agregarAlCarrito(id) {
-  carrito.push(productos.find(p => p.id == id));
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  calcularTotalCarrito();
-}
-
-function vaciarCarrito() {
-  montoTotalCompra.innerText = '0';
-  cantProductos.innerText = '0';
-  localStorage.clear();
-  carrito = [];
-}
-
 //Creo la seccion carrito con DOM
 
 let sectionProductos = document.getElementById('section-productos');
