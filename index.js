@@ -46,24 +46,34 @@ class Producto {
 
 //Inicializo arrays
 
-const botas = [];
-const texanas = [];
 const borcegos = [];
+const botas = [];
+const sandalias = [];
+const texanas = [];
+const zapatos = [];
 const carrito = [];
 
 //Cargo el stock de productos
 
-botas.push(new Producto({nombre: 'Botas Winx', id: 1, precio: '$16.890', color:'Negro', talle: '45', stock: 15}));
-botas.push(new Producto({nombre: 'Botas Skul', id: 2, precio: '$15.890', color:'Negro', talle: '45', stock: 15}));
-botas.push(new Producto({nombre: 'Botas XXX', id: 3, precio: '$11.890', color:'Negro', talle: '46', stock: 15}));
+borcegos.push(new Producto({nombre: 'Borcegos Beta', id: 1, precio: '$8.990', color:'Negro', talle: '45', stock: 15}));
+borcegos.push(new Producto({nombre: 'Borcegos Delta', id: 2, precio: '$13.890', color:'Negro', talle: '46', stock: 15}));
+borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 3, precio: '$15.890', color:'Negro', talle: '45', stock: 15}));
 
-texanas.push(new Producto({nombre: 'Texanas Wendy', id: 4, precio: '$16.890', color:'Negro', talle: '46', stock: 15}));
-texanas.push(new Producto({nombre: 'Texanas Aria', id: 5, precio: '$13.890', color:'Negro', talle: '46', stock: 15}));
-texanas.push(new Producto({nombre: 'Texanas Shirp', id: 6, precio: '$13.990', color:'Negro', talle: '45', stock: 15}));
+botas.push(new Producto({nombre: 'Boots Winx', id: 4, precio: '$16.890', color:'Negro', talle: '45', stock: 15}));
+botas.push(new Producto({nombre: 'Boots Skul', id: 5, precio: '$15.890', color:'Negro', talle: '45', stock: 15}));
+botas.push(new Producto({nombre: 'Boots XXX', id: 6, precio: '$11.890', color:'Negro', talle: '46', stock: 15}));
 
-borcegos.push(new Producto({nombre: 'Borcegos Beta', id: 7, precio: '$8.990', color:'Negro', talle: '45', stock: 15}));
-borcegos.push(new Producto({nombre: 'Borcegos Delta', id: 8, precio: '$13.890', color:'Negro', talle: '46', stock: 15}));
-borcegos.push(new Producto({nombre: 'Borcegos Marig', id: 9, precio: '$15.890', color:'Negro', talle: '45', stock: 15}));
+sandalias.push(new Producto({nombre: 'Sandals Berry', id: 7, precio: '$13.890', color:'Negro', talle: '45', stock: 15}));
+sandalias.push(new Producto({nombre: 'Sandals Strappy', id: 8, precio: '$13.890', color:'Negro', talle: '45', stock: 15}));
+sandalias.push(new Producto({nombre: 'Sandals Ava', id: 9, precio: '$14.890', color:'Negro', talle: '46', stock: 15}));
+
+texanas.push(new Producto({nombre: 'Texanas Wendy', id: 10, precio: '$16.890', color:'Negro', talle: '46', stock: 15}));
+texanas.push(new Producto({nombre: 'Texanas Aria', id: 11, precio: '$13.890', color:'Negro', talle: '46', stock: 15}));
+texanas.push(new Producto({nombre: 'Texanas Shirp', id: 12, precio: '$13.990', color:'Negro', talle: '45', stock: 15}));
+
+zapatos.push(new Producto({nombre: 'Atico Mules', id: 13, precio: '$13.290', color:'Negro', talle: '45', stock: 15}));
+zapatos.push(new Producto({nombre: 'Zara Hells', id: 14, precio: '$17.890', color:'Negro', talle: '45', stock: 15}));
+zapatos.push(new Producto({nombre: 'Devon Hells', id: 15, precio: '$13.690', color:'Negro', talle: '46', stock: 15}));
 
 carrito.push();
 
@@ -78,13 +88,13 @@ let sectionProductos = document.getElementById('section-productos');
 function crearCard(producto) {
   //Creo el div contenedor para cada card y aplico estilos
   let card = document.createElement('div');
-  /* card.setAttribute('class', 'card card-producto');
-  card.style.width = '18rem'; */
+  card.setAttribute('class', 'card card-producto');
+  card.style.width = '18rem';
   //Asigno las cards al elemento padre sección
   sectionProductos.appendChild(card);
   //Creo divs que contengan las imágenes de los productos y se los asigno como hijos a las cards
   let cardImg = document.createElement('div');
-  cardImg.innerHTML = `<img src="./img/${producto.id}.jpg" class="card-img-top" alt="${producto.nombre}"></img>`;
+  cardImg.innerHTML = `<img src="./imagenes/${producto.id}.jpeg" class="card-img-top" alt="${producto.nombre}"></img>`;
   card.appendChild(cardImg);
   //Creo divs que contengan los nombres de los productos y los botones, despues se los asigno como hijos a las cards
   let cardBody = document.createElement('div');
@@ -92,19 +102,25 @@ function crearCard(producto) {
                         <p class="card-text">Precio: $${producto.precio}</p>
                         <button class="btn btn-dark">Comprar</button>`;
   card.appendChild(cardBody);
-  /* cardBody.setAttribute('class', 'card-body'); */
+  cardBody.setAttribute('class', 'card-body');
 }
 
 //Demuestro los productos
 
+for(const borcego of borcegos) {
+  alert('ID (' + borcego.id + ') - ' + borcego.nombre + ' ' + borcego.precio);
+}
 for(const bota of botas) {
   alert('ID (' + bota.id + ') - ' + bota.nombre + ' ' + bota.precio);
+}
+for(const sandalia of sandalias) {
+  alert('ID (' + sandalia.id + ') - ' + sandalia.nombre + ' ' + sandalia.precio);
 }
 for(const texana of texanas) {
   alert('ID (' + texana.id + ') - ' + texana.nombre + ' ' + texana.precio);
 }
-for(const borcego of borcegos) {
-  alert('ID (' + borcego.id + ') - ' + borcego.nombre + ' ' + borcego.precio);
+for(const zapato of zapatos) {
+  alert('ID (' + zapato.id + ') - ' + zapato.nombre + ' ' + zapato.precio);
 }
 
 //Funcion para calcular el precio final de la compra
@@ -116,9 +132,11 @@ function calcularPrecio(precioCalzado, cantidadCalzado, costoEnvio) {
 //Solicito ID de los zapatos
 
 let botaSeleccionada = parseInt(prompt('Ingresá el ID de las botas que deseas comprar:'));
-const botasElegidas = botas.find(botas => botas.id === botaSeleccionada);
-const texanasElegidas = texanas.find(texanas => texanas.id === botaSeleccionada);
 const borcegosElegidos = borcegos.find(borcegos => borcegos.id === botaSeleccionada);
+const botasElegidas = botas.find(botas => botas.id === botaSeleccionada);
+const sandaliasElegidas = sandalias.find(sandalias => sandalias.id === botaSeleccionada);
+const texanasElegidas = texanas.find(texanas => texanas.id === botaSeleccionada);
+const zapatosElegidas = zapatos.find(zapatos => zapatos.id === botaSeleccionada);
 
 //Solicito al usuario la cantidad de la prenda
 
@@ -134,22 +152,34 @@ if(botaSeleccionada <= 0) {
   alert('Ingresá un ID válido');
 
 } else if(botaSeleccionada <= 3) {
+  alert(`Seleccionaste ${borcegosElegidos.nombre} ${borcegosElegidos.precio} \nTocá aceptar para agregarlos a tu carrito`);
+  Number(alert(`El precio final de tu compra es: $${calcularPrecio(borcegosElegidos.precio, cantidad, envio)}`));
+  alert('¡Que lo disfrutes!');
+  borcegosElegidos.vender(cantidad);
+
+} else if(botaSeleccionada <= 6) {
   alert(`Seleccionaste ${botasElegidas.nombre} ${botasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
-  alert(`El precio final de tu compra es: $${calcularPrecio(botasElegidas.precio, cantidad, envio)}`);
+  Number(alert(`El precio final de tu compra es: $${calcularPrecio(botasElegidas.precio, cantidad, envio)}`));
   alert('¡Que lo disfrutes!');
   botasElegidas.vender(cantidad);
 
-} else if(botaSeleccionada <= 6) {
+} else if(botaSeleccionada <= 9) {
+  alert(`Seleccionaste ${sandaliasElegidas.nombre} ${sandaliasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
+  Number(alert(`El precio final de tu compra es: $${calcularPrecio(sandaliasElegidas.precio, cantidad, envio)}`));
+  alert('¡Que lo disfrutes!');
+  sandaliasElegidas.vender(cantidad);
+
+} else if(botaSeleccionada <= 12) {
   alert(`Seleccionaste ${texanasElegidas.nombre} ${texanasElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
-  alert(`El precio final de tu compra es: $${calcularPrecio(texanasElegidas.precio, cantidad, envio)}`);
+  Number(alert(`El precio final de tu compra es: $${calcularPrecio(texanasElegidas.precio, cantidad, envio)}`));
   alert('¡Que lo disfrutes!');
   texanasElegidas.vender(cantidad);
 
-} else if(botaSeleccionada <= 9) {
-  alert(`Seleccionaste ${borcegosElegidos.nombre} ${borcegosElegidos.precio} \nTocá aceptar para agregarlos a tu carrito`);
-  alert(`El precio final de tu compra es: $${calcularPrecio(borcegosElegidos.precio, cantidad, envio)}`);
+} else if(botaSeleccionada <= 15) {
+  alert(`Seleccionaste ${zapatosElegidas.nombre} ${zapatosElegidas.precio} \nTocá aceptar para agregarlas a tu carrito`);
+  Number(alert(`El precio final de tu compra es: $${calcularPrecio(zapatosElegidas.precio, cantidad, envio)}`));
   alert('¡Que lo disfrutes!');
-  borcegosElegidos.vender(cantidad);
+  zapatosElegidas.vender(cantidad);
 
 } else {
   alert('Ingresá un ID válido');
