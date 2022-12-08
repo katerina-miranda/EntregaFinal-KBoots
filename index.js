@@ -43,7 +43,7 @@ cantidadProductos.appendChild(cantProductos);
 let botonFinalizar = document.createElement('button');
 botonFinalizar.innerText = 'Finalizar compra';
 sectionCarrito.appendChild(botonFinalizar);
-botonFinalizar.className('boton');
+botonFinalizar.setAttribute('class', 'boton');
 
 //Funciones
 
@@ -81,7 +81,7 @@ botonFinalizar.onclick = () => {
 
 for(const producto of productos) {
   let container = document.createElement('div');
-  container.className('card-product');
+  container.setAttribute('class', 'card-product');
   container.innerHTML = `<div class="img-container">
                          <img class="img-product" src="${producto.foto}" alt="${producto.nombre}"/>
                          </div>
