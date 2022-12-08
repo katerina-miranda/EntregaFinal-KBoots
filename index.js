@@ -1,27 +1,3 @@
-//Funciones
-
-function agregarAlCarrito(id) {
-  carrito.push(productos.find(p => p.id == id));
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  calcularTotalCarrito();
-}
-
-function calcularTotalCarrito() {
-  let total = 0;
-  for(const producto of carrito) {
-    total += producto.precio;
-  }
-  montoTotalCompra.innerText = total;
-  cantProductos.innerText = carrito.length;
-}
-
-function vaciarCarrito() {
-  montoTotalCompra.innerText = '0';
-  cantProductos.innerText = '0';
-  localStorage.clear();
-  carrito = [];
-}
-
 //Inicializo arrays
 
 const carrito = [];
@@ -67,7 +43,31 @@ cantidadProductos.appendChild(cantProductos);
 let botonFinalizar = document.createElement('button');
 botonFinalizar.innerText = 'Finalizar compra';
 sectionCarrito.appendChild(botonFinalizar);
-botonFinalizar.setAttribute('class', 'boton');
+botonFinalizar.className('boton');
+
+//Funciones
+
+function calcularTotalCarrito() {
+  let total = 0;
+  for(const producto of carrito) {
+    total += producto.precio;
+  }
+  montoTotalCompra.innerText = total;
+  cantProductos.innerText = carrito.length;
+}
+
+function agregarAlCarrito(id) {
+  carrito.push(productos.find(p => p.id == id));
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  calcularTotalCarrito();
+}
+
+function vaciarCarrito() {
+  montoTotalCompra.innerText = '0';
+  cantProductos.innerText = '0';
+  localStorage.clear();
+  carrito = [];
+}
 
 //Le agrego un evento al boton para que muestre el precio final y despues se vacie el carrito
 
@@ -81,9 +81,9 @@ botonFinalizar.onclick = () => {
 
 for(const producto of productos) {
   let container = document.createElement('div');
-  container.setAttribute('class', 'card-product');
+  container.className('card-product');
   container.innerHTML = `<div class="img-container">
-                         <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
+                         <img class="img-product" src="${producto.foto}" alt="${producto.nombre}"/>
                          </div>
                          <div class="info-producto">
                          <p class="font">${producto.nombre}</p>
