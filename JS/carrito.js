@@ -1,181 +1,172 @@
-/* //Le doy la bienvenida al ususaario cn un localStorage
-
-let usuario;
-let usuarioStorage = localStorage.getItem('usuario');
-
-if(usuarioStorage) {
-  usuario = usuarioStorage;
-  let mensaje = `Bienvenido nuevamente ${usuario}`;
-  alert(mensaje);
-} else {
-  usuario = prompt('Por favor ingrese su usuario');
-  alert(`Hola ${usuario}, bienvenid@ a K-SHOES`);
-  localStorage.setItem('usuario', usuario);
-}
-
-//Creo la seccion carrito con DOM
-
-let sectionProductos = document.getElementById('section-productos');
-let sectionCarrito = document.getElementById('section-carrito');
-
-let totalCompra = document.createElement('div');
-totalCompra.innerHTML = '<h2>Total: $</h2>';
-sectionCarrito.appendChild(totalCompra);
-
-let montoTotalCompra = document.createElement('h2');
-montoTotalCompra.innerText = '0';
-totalCompra.appendChild(montoTotalCompra);
-
-let cantidadProductos = document.createElement('div');
-cantidadProductos.innerHTML = '<h3>Cantidad de productos:</h3>';
-sectionCarrito.appendChild(cantidadProductos);
-
-let cantProductos = document.createElement('h3');
-cantProductos.innerText = '0';
-cantidadProductos.appendChild(cantProductos);
-
-let botonFinalizar = document.createElement('button');
-botonFinalizar.innerText = 'Finalizar compra';
-sectionCarrito.appendChild(botonFinalizar);
-botonFinalizar.setAttribute('class', 'boton');
-
-//Funciones
-
-function agregarAlCarrito(id) {
-  carrito.push(productos.find(p => p.id == id));
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  calcularTotalCarrito();
-}
-
-function calcularTotalCarrito() {
-  let total = 0;
-  for (const producto of carrito) {
-    total += producto.precio;
-  }
-  montoTotalCompra.innerText = total;
-  cantProductos.innerText = carrito.length;
-}
-
-function vaciarCarrito() {
-  montoTotalCompra.innerText = "0";
-  cantProductos.innerText = "0";
-  localStorage.clear();
-  carrito=[];
-}
-
-//Le agrego un evento al boton para que muestre el precio final y despues se vacie el carrito
-
-botonFinalizar.onclick = () => {
-  const precioFinal = montoTotalCompra.innerText;
-  alert(`Total a abonar: $${precioFinal}`);
-  vaciarCarrito();
-}
-
-//Renderizado de los productos en cards
-
-for (const producto of productos) {
-  let container = document.createElement('div');
-  container.setAttribute('class', 'card-product');
-  container.innerHTML = `<div class="img-container">
-                        <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
-                        </div>
-                        <div class="info-producto">
-                        <p class="font">${producto.nombre}</p>
-                        <strong class="font">$${producto.precio}</strong>
-                        <button class="boton" id="${producto.id}">Agregar al carrito</button>
-                        </div>`;
-  sectionProductos.appendChild(container);
-  //Evento para que los productos se agreguen al carrito al hacer click en el boton
-  document.getElementById(`${producto.id}`).onclick = () => agregarAlCarrito(`${producto.id}`);
-} */
-
-//inicializo la variable carrito con una funcion para que detecte si existen valores en el storage
+//Inicializo la variable carrito con una funcion para que detecte si existen valores previos en el storage
 let carrito = cargarCarrito();
 
-//tomo control sobre las secciones del HTML
-let sectionProductos = document.getElementById("section-productos");
-let sectionCarrito = document.getElementById("section-carrito");
+//Inicializo la variable productosJSON para poder trabajar con la funcion obtenerJSON
+let productosJSON = [];
 
-//creacion de la seccion carrito con DOM
-let totalCompra = document.createElement("div");
-totalCompra.innerHTML = "<h2>Total: $</h2>";
-sectionCarrito.appendChild(totalCompra);
+//Cargo la variable cantidad para que no se pierdan los datos almacenados al refrescar la ventana
+let cantidadTotalCompra = carrito.length;
 
-let montoTotalCompra = document.createElement("h2");
-montoTotalCompra.innerText = "0";
-totalCompra.appendChild(montoTotalCompra);
+//Dentro del document ready agrego todo el codigo generado por dom
+$(document).ready(function () {
+  $("#cantidad-compra").text(cantidadTotalCompra);
+  //Configuracion del selector para ordenar productos
+  $("#seleccion option[value='pordefecto']").attr("selected", true);
+  $("#seleccion").on("change", ordenarProductos);
 
-let cantidadProductos = document.createElement("div");
-cantidadProductos.innerHTML = "<h3>Cantidad de productos: </h3>";
-sectionCarrito.appendChild(cantidadProductos);
+  //Llamo a las funciones que necesitan renderizarse
+  $("#gastoTotal").html(`Total: $${calcularTotalCarrito()}`);
+  obtenerJSON();
+  renderizarProductos();
+  mostrarEnTabla();
 
-let cantProductos = document.createElement("h3");
-cantProductos.innerText = "0";
-cantidadProductos.appendChild(cantProductos);
+  //Evento para que figure una alerta si el carrito esta vacio
+  $("#btn-continuar").on("click", function (e) {
+    if (carrito.length == 0) {
+      e.preventDefault();
+      Swal.fire({
+        icon: "error",
+        title: "Tu carrito está vacio",
+        text: "Agregá algun producto para continuar",
+        confirmButtonColor: "#444444",
+      });
+    }
+  });
+});
 
-let botonFinalizar = document.createElement("button");
-botonFinalizar.innerText = "Finalizar compra";
-sectionCarrito.appendChild(botonFinalizar);
-botonFinalizar.setAttribute("class", "boton");
-
-//Le agrego un evento al boton para que muestre el precio final
-botonFinalizar.onclick = () => {
-  const precioFinal = montoTotalCompra.innerText;
-  //uso sweet alert para que el usuario confirme su compra, cuando toca si se vacia el carrito
-  Swal.fire({
-    title: '¿Seguro que queres finalizar tu compra?',
-    text: `Total a abonar: $${precioFinal}`,
-    showCancelButton: true,
-    confirmButtonColor: '#008f39',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si',
-    cancelButtonText: 'No'
-  }).then((result) => {
-    result.isConfirmed ? Swal.fire('Compra confirmada', '¡Que lo disfrutes!', 'success') : vaciarCarrito;
-  })
+//Funcion para el renderizado de los productos en cards
+function renderizarProductos() {
+  for (const producto of productosJSON) {
+    $("#section-productos").append(`<div class="card-product"> 
+                                    <div class="img-container">
+                                    <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
+                                    </div>
+                                    <div class="info-producto">
+                                    <p class="font">${producto.nombre}</p>
+                                    <strong class="font">$${producto.precio}</strong>
+                                    <button class="botones" id="btn${producto.id}"> Agregar al carrito </button>
+                                    </div>
+                                    </div>`);
+    $(`#btn${producto.id}`).on("click", function () {
+      agregarAlCarrito(producto);
+    });
+  }
 }
 
-//renderizado de los productos en cards
-for (const producto of productos) {
-  let container = document.createElement("div");
-  container.setAttribute("class", "card-product");
-  container.innerHTML = ` <div class="img-container">
-                            <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
-                            </div>
-                            <div class="info-producto">
-                            <p class="font">${producto.nombre}</p>
-                            <strong class="font">$${producto.precio}</strong>
-                            <button class="boton" id="btn${producto.id}"> Agregar al carrito </button>
-                            </div>`;
-  sectionProductos.appendChild(container);
-  //Evento para que los productos se agreguen al carrito al hacer click en el boton
-  document.getElementById(`btn${producto.id}`).onclick = () => agregarAlCarrito(`${producto.id}`);
+//Funcion utilizando AJAX para obtener la informacion de los productos creados en el archivo json
+function obtenerJSON() {
+  $.getJSON("../JSON/data.json", function (respuesta, estado) {
+    if (estado == "success") {
+      productosJSON = respuesta;
+      renderizarProductos();
+    }
+  });
 }
 
-//Funciones
-function agregarAlCarrito(id) {
-  carrito.push(productos.find(p => p.id == id));
+//Funcion para ordenar los productos segun precio y orden alfabetico
+function ordenarProductos() {
+  let seleccion = $("#seleccion").val();
+  if (seleccion == "menor") {
+    productosJSON.sort(function (a, b) {
+      return a.precio - b.precio;
+    });
+  } else if (seleccion == "mayor") {
+    productosJSON.sort(function (a, b) {
+      return b.precio - a.precio;
+    });
+  } else if (seleccion == "alfabetico") {
+    productosJSON.sort(function (a, b) {
+      return a.nombre.localeCompare(b.nombre);
+    });
+  }
+
+  //Luego del reordenamiento tenemos que volver a renderizar
+  $(".card-product").remove();
+  renderizarProductos();
+}
+
+//Creo una clase para cargar productos en el carrito y modificar sus cantidades
+class ProductoCarrito {
+  constructor(prod) {
+    this.id = prod.id;
+    this.foto = prod.foto;
+    this.nombre = prod.nombre;
+    this.precio = prod.precio;
+    this.cantidad = 1;
+  }
+}
+
+//Funcion para agregar productos al carrito, modificando el modal con el detalle del carrito
+function agregarAlCarrito(productoAgregado) {
+  let encontrado = carrito.find((p) => p.id == productoAgregado.id);
+  if (encontrado == undefined) {
+    let productoEnCarrito = new ProductoCarrito(productoAgregado);
+    carrito.push(productoEnCarrito);
+    Swal.fire({
+      icon: "success",
+      title: "Nuevo producto agregado al carrito",
+      text: productoAgregado.nombre,
+      confirmButtonColor: "#444444",
+    });
+
+    //Agregamos una nueva fila a la tabla de carrito en caso de que el producto no se encontrara
+    $("#tablabody")
+      .append(`<tr id='fila${productoEnCarrito.id}' class='tabla-carrito'>
+                  <td> ${productoEnCarrito.nombre}</td>
+                  <td id='${productoEnCarrito.id}'> ${productoEnCarrito.cantidad}</td>
+                  <td> ${productoEnCarrito.precio}</td>
+                  <td><button class='btn btn-light' id="btn-eliminar-${productoEnCarrito.id}">🗑️</button></td>
+                </tr>`);
+  } else {
+    //Pido al carrito la posicion del producto y despues incremento su cantidad
+    let posicion = carrito.findIndex((p) => p.id == productoAgregado.id);
+    carrito[posicion].cantidad += 1;
+    $(`#${productoAgregado.id}`).html(carrito[posicion].cantidad);
+  }
+
+  $("#gastoTotal").html(`Total: $ ${calcularTotalCarrito()}`);
   localStorage.setItem("carrito", JSON.stringify(carrito));
-  calcularTotalCarrito();
+  mostrarEnTabla();
 }
 
+//Funcion para rehacer la tabla del modal cada vez que se refresca la pagina y eliminar productos del carrito
+function mostrarEnTabla() {
+  $("#tablabody").empty();
+  for (const prod of carrito) {
+    $("#tablabody").append(`<tr id='fila${prod.id}' class='tabla-carrito'>
+                              <td> ${prod.nombre}</td>
+                              <td id='${prod.id}'> ${prod.cantidad}</td>
+                              <td> ${prod.precio}</td>
+                              <td><button class='btn btn-light' id="eliminar${prod.id}">🗑️</button></td>
+                            </tr>`);
+    $(`#eliminar${prod.id}`).click(function () {
+      let eliminado = carrito.findIndex((p) => p.id == prod.id);
+      carrito.splice(eliminado, 1);
+      console.log(eliminado);
+      $(`#fila${prod.id}`).remove();
+      $("#gastoTotal").html(`Total: $ ${calcularTotalCarrito()}`);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    });
+  }
+}
+
+//Funcion para calcular el monto total del carrito y la cantidad
 function calcularTotalCarrito() {
   let total = 0;
   for (const producto of carrito) {
-    total += producto.precio;
+    total += producto.precio * producto.cantidad;
   }
-  montoTotalCompra.innerText = total;
-  cantProductos.innerText = carrito.length;
+  $("#montoTotalCompra").text(total);
+  $("#cantidad-compra").text(carrito.length);
+  return total;
 }
 
-function vaciarCarrito() {
-  montoTotalCompra.innerText = "0";
-  cantProductos.innerText = "0";
-  localStorage.clear();
-  carrito = [];
-}
-
+//Funcion para traer el carrito cargado cada vez que se refresca la pagina
 function cargarCarrito() {
   let carrito = JSON.parse(localStorage.getItem("carrito"));
-  carrito == null ? [] : carrito; 
+  if (carrito == null) {
+    return [];
+  } else {
+    return carrito;
+  }
 }
