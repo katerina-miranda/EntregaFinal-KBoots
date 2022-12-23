@@ -1,5 +1,5 @@
 //Dentro del document ready agrego la funcion para validar el form
-$(document).ready(function () {
+/* $(document).ready(function () {
   validarDatosContacto();
 });
 
@@ -65,4 +65,4 @@ function enviarDatos(datos) {
     console.log(respuesta);
     console.log(estado);
   });
-}
+} */

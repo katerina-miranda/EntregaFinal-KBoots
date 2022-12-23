@@ -11,8 +11,8 @@ let cantidadTotalCompra = carrito.length;
 $(document).ready(function () {
   $("#cantidad-compra").text(cantidadTotalCompra);
   //Configuracion del selector para ordenar productos
-  $("#seleccion option[value='pordefecto']").attr("selected", true);
-  $("#seleccion").on("change", ordenarProductos);
+  $("#seleccion option[value='pordefecto']").attr('selected', true);
+  $('#seleccion').on("change", ordenarProductos);
 
   //Llamo a las funciones que necesitan renderizarse
   $("#gastoTotal").html(`Total: $${calcularTotalCarrito()}`);
@@ -38,14 +38,14 @@ $(document).ready(function () {
 function renderizarProductos() {
   for (const producto of productosJSON) {
     $("#section-productos").append(`<div class="card-product"> 
-                                    <div class="img-container">
-                                    <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
-                                    </div>
-                                    <div class="info-producto">
-                                    <p class="font">${producto.nombre}</p>
-                                    <strong class="font">$${producto.precio}</strong>
-                                    <button class="botones" id="btn${producto.id}"> Agregar al carrito </button>
-                                    </div>
+                                      <div class="img-container">
+                                        <img src="${producto.foto}" alt="${producto.nombre}" class="img-product"/>
+                                      </div>
+                                      <div class="info-producto">
+                                        <p class="font">${producto.nombre}</p>
+                                        <strong class="font">$${producto.precio}</strong>
+                                        <button class="botones" id="btn${producto.id}">Agregar al carrito</button>
+                                      </div>
                                     </div>`);
     $(`#btn${producto.id}`).on("click", function () {
       agregarAlCarrito(producto);
@@ -111,7 +111,7 @@ function agregarAlCarrito(productoAgregado) {
 
     //Agregamos una nueva fila a la tabla de carrito en caso de que el producto no se encontrara
     $("#tablabody")
-      .append(`<tr id='fila${productoEnCarrito.id}' class='tabla-carrito'>
+      .append(` <tr id='fila${productoEnCarrito.id}' class='tabla-carrito'>
                   <td> ${productoEnCarrito.nombre}</td>
                   <td id='${productoEnCarrito.id}'> ${productoEnCarrito.cantidad}</td>
                   <td> ${productoEnCarrito.precio}</td>

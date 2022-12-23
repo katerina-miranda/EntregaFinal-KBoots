@@ -64,15 +64,51 @@ header {
   z-index: 1;
 }
 
+/* --- FOOTER --- */
+footer {
+  background-color: #1e1e1e81;
+  color: #f5f5f5;
+  padding: 10px;
+  font-size: 10px;
+}
+
+p {
+  text-align: center;
+}
+
+.footer-content {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-redes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer-redes li {
+  list-style-type: none;
+}
+
+i {
+  font-size: 35px;
+  margin: 10px;
+  width: 25px;
+}
+
 /* --- INDEX --- */
 div {
-  display: flex;
-  justify-content: flex-end;
+  display: flex;/* 
+  justify-content: flex-end; */
+  flex-direction: column;
 } 
 
 .div-cuadros {
   display: flex;
   justify-content: center;
+  flex-direction: row;
   width: 90%;
   margin: auto;
 }
@@ -95,38 +131,40 @@ div {
 #container-general {
   display: flex;
   flex-direction: column;
+  color: #f3f3f3;
 }
 
 #container-general #ordenar-modal {
   display: flex;
   justify-content: space-around;
+  flex-direction: row;
 }
 
 #container-general #ordenar-modal #seleccion {
   width: 20%;
-  margin: 20px 0px 30px 80px; 
+  margin: 20px 0px 20px 80px;
 }
 
 #container-general #ordenar-modal .modal-carrito {
-  width: 15%;
-  align-self: center; 
+  color: #000000;
+  width: 20%;
+  margin: 20px 80px 20px 0px;
 }
       
 #container-general #ordenar-modal .modal-carrito i {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
     
 #container-general #ordenar-modal .table {
-  text-align: center; 
+  text-align: center;
 }
     
 #container-general #ordenar-modal #gastoTotal {
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
 }
   
 #container-general #ordenar-modal .modal-footer a {
   text-decoration: none;
-  color: #f5f5f5;
 }
   
 #container-general #section-productos {
@@ -138,27 +176,22 @@ div {
   align-items: flex-end; 
 }
    
-#container-general #section-productos .card-product {
+.card-product {
   margin: 20px 0px;
   text-align: center; 
+  display: grid;
 }
       
 #container-general #section-productos .card-product .img-container {
   position: relative; 
 }
         
-#container-general #section-productos .card-product .img-container img {
-  width: 20em;
-  height: 50%;
-  margin: 10px; 
-}
-      
-#container-general #section-productos .card-product .info-producto {
-  display: flex;
-  flex-direction: column;
+.img-container img {
+  width: 345px;
+  height: 500px;
 }
 
-/* === CARRITO === */
+/* --- CARRITO --- */
 .section-carrito {
   display: flex;
   flex-direction: column-reverse;
@@ -250,36 +283,3 @@ div {
         width: 100%; }
         .section-contacto .form-contacto section form .botones:hover {
           color: #d7c1d7d5; }
-
-/* --- FOOTER --- */
-footer {
-  background-color: #1e1e1e81;
-  color: #f5f5f5;
-  padding: 10px;
-  font-size: 10px;
-}
-
-p {
-  text-align: center;
-}
-
-.footer-content {
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-}
-
-.footer-redes {
-  display: flex;
-  flex-direction: row;
-}
-
-.footer-redes li {
-  list-style-type: none;
-}
-
-i {
-  font-size: 35px;
-  margin: 10px;
-  width: 25px;
-}
