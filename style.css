@@ -167,6 +167,12 @@ div {
   font-size: 1.2rem;
   color: #000100;
 }
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
   
 .modal-footer a {
   text-decoration: none;
@@ -229,7 +235,6 @@ form .botones {
 
 .pago-tarjeta {
   display: none; 
-  border: red 1px solid;
 }
 
 .resumen-carrito {

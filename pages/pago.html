@@ -43,32 +43,32 @@
         <h2>Datos de contacto</h2>
         <div class="col-12">
           <input type="text" class="form-control entrada-pago" placeholder="Nombre" id="nombre"/>
-          <div id="error-nombre" class="error">Ingresa un nombre valido</div>
+          <div id="error-nombre" class="error">Ingresá un nombre válido</div>
         </div>
         <div class="col-12 col-md-12 col-lg-6">
           <input type="email" class="form-control entrada-pago" placeholder="Email" id="email"/>
-          <div id="error-email" class="error">Ingresa un email valido</div>
+          <div id="error-email" class="error">Ingresá un email válido</div>
         </div>
         <div class="col-12 col-md-12 col-lg-6">
           <input type="numbers" class="form-control entrada-pago" placeholder="Telefono" id="telefono">
-          <div id="error-tel" class="error">Ingresa un telefono valido</div>
+          <div id="error-tel" class="error">Ingresá un telefono válido</div>
         </div>
         <h2>Entrega</h2>
         <div class="col-12">
           <input type="text" class="form-control entrada-pago" placeholder="Dirección" id="direccion"/>
-          <div id="error-direccion" class="error">Ingresa una dirección valida</div>
+          <div id="error-direccion" class="error">Ingresá una dirección válida</div>
         </div>
         <div class="col-12 col-md-12 col-lg-4">
           <input type="number" class="form-control entrada-pago" placeholder="Código postal" id="cod-postal"/>
-          <div id="error-codigopostal" class="error">Ingresa un codigo postal valido</div>
+          <div id="error-codigopostal" class="error">Ingresá un código postal válido</div>
         </div>
         <div class="col-12 col-md-12 col-lg-4">
           <input type="text" class="form-control entrada-pago" placeholder="Provincia" id="provincia"/>
-          <div id="error-provincia" class="error">Ingresa una provincia valida</div>
+          <div id="error-provincia" class="error">Ingresá una provincia válida</div>
         </div>
         <div class="col-12 col-md-12 col-lg-4">
           <input type="text" class="form-control entrada-pago" placeholder="Localidad" id="localidad"/>
-          <div id="error-localidad" class="error">Ingresa una localidad valida</div>
+          <div id="error-localidad" class="error">Ingresá una localidad válida</div>
         </div>
         <div>
           <select class="form-select" id="metodo-envio" aria-label="Default select example">
@@ -78,24 +78,24 @@
             <option value="interior">Envío a domicilio resto del pais</option>
             <option value="retiro">Retirar por nuestro showroom (gratis)</option>
           </select>
-          <div id="error-envio" class="error">Ingresa un metodo de envio</div>
+          <div id="error-envio" class="error">Ingresá un metodo de envio</div>
         </div>
         <h2>Pago</h2>
         <div>
           <select name="pago" class="form-select" id="metodo-pago">
             <option value="defecto">Método de pago</option>
-            <option value="debito" id="debito">Tarjeta de debito</option>
-            <option value="credito" id="credito">Tarjeta de credito</option>
+            <option value="debito" id="debito">Tarjeta de débito</option>
+            <option value="credito" id="credito">Tarjeta de crédito</option>
             <option value="efectivo" id="efectivo">Efectivo</option>
           </select>
-        <div id="error-pago" class="error">Ingresa un metodo de pago</div>
+        <div id="error-pago" class="error">Ingresá un metodo de pago</div>
         <div class="col-12 col-md-12 col-lg-6">
           <input type="number" class="form-control pago-tarjeta entrada-pago" placeholder="Número tarjeta" id="num-tarjeta"/>
-          <div id="error-numtarj" class="error">Ingresa un numero valido</div>
+          <div id="error-numtarj" class="error">Ingresá un número válido</div>
         </div>
         <div class="col-12 col-md-12 col-lg-6">
           <input type="number" class="form-control pago-tarjeta entrada-pago" placeholder="Codigo de seguridad" id="cod-seguridad"/>
-          <div id="error-codseg" class="error">Ingrese un codigo valido</div>
+          <div id="error-codseg" class="error">Ingresá un código válido</div>
         </div>
         <div class="col-12">
           <button type="submit" class="btn botones" id="btn-finalizar">Finalizar compra</button>
@@ -138,6 +138,7 @@
   <!-- Sweet Alert -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!--Mi script-->
+  <script src="../JS/carrito.js"></script>
   <script src="../JS/pago.js"></script>
 </body>
 </html>
