@@ -100,8 +100,7 @@ i {
 
 /* --- INDEX --- */
 div {
-  display: flex;/* 
-  justify-content: flex-end; */
+  display: flex;
   flex-direction: column;
 } 
 
@@ -237,11 +236,6 @@ form .botones {
   display: none; 
 }
 
-.resumen-carrito {
-/*   width: 60%;
-  margin-bottom: 50px;  */
-}
-
 .resumen-carrito table {
   background-color: rgba(158, 158, 158, 0.615);
   color: #000100;
@@ -258,56 +252,64 @@ form .botones {
 .section-contacto {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly; }
-  .section-contacto .div-contacto {
-    display: grid; }
-    .section-contacto .div-contacto div {
-      background-color: rgba(158, 158, 158, 0.137);
-      padding: 40px;
-      height: 40vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-radius: 10px;
-      margin: 20px; }
-      .section-contacto .div-contacto div p {
-        padding: 10px; }
-        .section-contacto .div-contacto div p i {
-          margin-right: 25px;
-          cursor: pointer;
-          font-size: 1.5rem;
-          align-items: center; }
-  .section-contacto .form-contacto section {
-    background-color: #d7c1d7d5;
-    padding: 40px;
-    border-radius: 10px;
-    width: 90vh; }
-    .section-contacto .form-contacto section form {
-      display: flex;
-      flex-direction: column; }
-      .section-contacto .form-contacto section form .error {
-        display: none;
-        color: #d11e1e;
-        font-size: 1rem; }
-      .section-contacto .form-contacto section form h2 {
-        margin-bottom: 30px;
-        font-weight: bold;
-        text-align: center;
-        font-size: 1.5rem; }
-      .section-contacto .form-contacto section form label,
-      .section-contacto .form-contacto section form div {
-        margin: 5px 0px 5px 0px;
-        font-size: 1.1rem; }
-      .section-contacto .form-contacto section form form input,
-      .section-contacto .form-contacto section form form textarea {
-        border: none;
-        border-radius: 5px;
-        border-bottom: 1px solid #000100;
-        resize: none; }
-        .section-contacto .form-contacto section form form input:focus,
-        .section-contacto .form-contacto section form form textarea:focus {
-          outline: none; }
-      .section-contacto .form-contacto section form .botones {
-        width: 100%; }
-        .section-contacto .form-contacto section form .botones:hover {
-          color: #d7c1d7d5; }
+  justify-content: space-evenly; 
+}
+
+.div-contacto {
+  display: grid; 
+}
+
+.div-contacto div {
+  background-color: rgba(158, 158, 158, 0.137);
+  padding: 40px;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.div-contacto div p {
+  padding: 10px; 
+}
+
+.div-contacto div p i {
+  margin-right: 25px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.form-contacto section {
+  background-color: #727272d5;
+  padding: 40px;
+  border-radius: 10px;
+  width: 90vh;
+}
+
+.form-contacto section form {
+  display: flex;
+  flex-direction: column; 
+}
+
+.form-contacto section form .error {
+  display: none;
+  color: #d11e1e;
+  font-size: 1rem; 
+}
+
+.form-contacto section form h2 {
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem; 
+  color: #000100;
+}
+
+.form-contacto section form div {
+  margin: 5px 0px 5px 0px;
+  font-size: 1.1rem; 
+  display: flex;
+  flex-direction: row;
+}
