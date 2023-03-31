@@ -9,9 +9,9 @@ body {
   background-color: #1e1e1e;
   color: #000100;
   font-family: "Oswald", sans-serif; 
-  background-image: url(./img/fondo.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url(./img/kshoes.png);
+  background-size: contain;
+  background-repeat: repeat;
 }
 
 .logo {
@@ -27,8 +27,8 @@ body {
   margin-top: 10px;
   text-align: center;
   align-self: center;
-  color: #f5f5f5;
   background-color: #444444;
+  border-radius: 10px;
 }
 
 h2 {
@@ -127,6 +127,7 @@ div {
 }
 
 /* --- PRODUCTOS --- */
+
 #container-general {
   display: flex;
   flex-direction: column;
@@ -198,6 +199,10 @@ div {
   height: 500px;
 }
 
+.img-product {
+  border-radius: 22px;
+}
+
 /* --- CARRITO --- */
 .section-carrito {
   display: flex;
@@ -260,7 +265,7 @@ form .botones {
 }
 
 .div-contacto div {
-  background-color: rgba(158, 158, 158, 0.137);
+  background-color: rgba(199, 199, 199, 0.677);
   padding: 40px;
   height: 40vh;
   display: flex;
@@ -282,7 +287,7 @@ form .botones {
 }
 
 .form-contacto section {
-  background-color: #727272d5;
+  background-color: #c0c0c0d5;
   padding: 40px;
   border-radius: 10px;
   width: 90vh;
