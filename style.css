@@ -106,8 +106,9 @@ div {
 
 .div-cuadros {
   display: flex;
-  justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 90%;
   margin: auto;
 }
@@ -204,6 +205,12 @@ div {
 }
 
 /* --- CARRITO --- */
+.form-carrito h2 {
+  color: #292929;
+  display: flex;
+  justify-content: center;
+}
+
 .section-carrito {
   display: flex;
   flex-direction: column-reverse;
@@ -216,7 +223,11 @@ div {
 }
 
 .form-carrito {
-  width: 60%; 
+  width: 60%;
+  margin-bottom: 25px;
+  background-color: #f5f5f5c1;
+  padding: 40px;
+  border-radius: 10px;
 }
 
 form h2 {
