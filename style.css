@@ -297,6 +297,10 @@ form .botones {
   align-items: center;
 }
 
+.form-contacto {
+  margin-bottom: 25px;
+}
+
 .form-contacto section {
   background-color: #c0c0c0d5;
   padding: 40px;
